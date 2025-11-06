@@ -83,7 +83,7 @@ struct ContentView: View {
 					}
 					.padding(.bottom, 20)
 					
-					// Haptic Buttons
+					// Haptic Buttons Row 1
 					HStack(spacing: 20) {
 						// UIImpactFeedbackGenerator Button
 						Button(action: {
@@ -120,7 +120,11 @@ struct ContentView: View {
 								.cornerRadius(10)
 						}
 						.sensoryFeedback(.impact(weight: .heavy), trigger: sensoryFeedbackTrigger)
-						
+					}
+					.padding(.bottom, 10)
+					
+					// Haptic Buttons Row 2
+					HStack(spacing: 20) {
 						// CHHapticEngine Button
 						Button(action: {
 							debugPrint("CHHapticEngine button tapped")
@@ -132,6 +136,20 @@ struct ContentView: View {
 								.padding(.horizontal, 16)
 								.padding(.vertical, 12)
 								.background(Color.orange)
+								.cornerRadius(10)
+						}
+						
+						// AudioServicesPlaySystemSound Button
+						Button(action: {
+							debugPrint("AudioServicesPlaySystemSound button tapped")
+							hapticManager.triggerSystemSoundHaptic()
+						}) {
+							Text("AudioServicesPlaySystemSound")
+								.font(.system(size: 14, weight: .semibold))
+								.foregroundColor(.white)
+								.padding(.horizontal, 16)
+								.padding(.vertical, 12)
+								.background(Color.purple)
 								.cornerRadius(10)
 						}
 					}

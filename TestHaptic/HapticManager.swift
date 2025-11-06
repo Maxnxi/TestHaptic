@@ -9,6 +9,7 @@ import UIKit
 import CoreHaptics
 import SwiftUI
 import AVFAudio
+import AudioToolbox
 
 class HapticManager: ObservableObject {
     private var hapticEngine: CHHapticEngine?
@@ -104,6 +105,14 @@ class HapticManager: ObservableObject {
         } catch {
             debugPrint("Failed to trigger CHHapticEngine: \(error.localizedDescription)")
         }
+    }
+    
+    // MARK: - AudioServicesPlaySystemSound
+    
+    func triggerSystemSoundHaptic() {
+        debugPrint("Triggering AudioServicesPlaySystemSound(1519)")
+        AudioServicesPlaySystemSound(1519)
+        debugPrint("AudioServicesPlaySystemSound(1519) triggered")
     }
 }
 
